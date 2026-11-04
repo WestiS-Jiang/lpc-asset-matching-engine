@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sprite Toolkit Frontend Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Sprite Toolkit Frontend Lab</h1>
+      <p class="subtitle">独立前端联调页：Prompt 分析、来源标注、精灵预览。</p>
+
+      <section class="card">
+        <h2>1. 输入</h2>
+        <div class="grid">
+          <label>
+            Backend URL
+            <input id="backendUrl" value="http://127.0.0.1:8000" />
+          </label>
+          <label>
+            Body Type
+            <select id="bodyType">
+              <option value="male">male</option>
+              <option value="female">female</option>
+              <option value="teen">teen</option>
+              <option value="muscular">muscular</option>
+              <option value="pregnant">pregnant</option>
+              <option value="child">child</option>
+            </select>
+          </label>
+          <label>
+            GEN 模式
+            <select id="genMode">
+              <option value="off" selected>OFF (只用LPC库)</option>
+              <option value="on">ON (允许生图+注册)</option>
+            </select>
+          </label>
+          <label>
+            Max GEN Tasks
+            <input id="maxTasks" type="number" min="1" max="5" step="1" value="2" />
+          </label>
+        </div>
+        <label class="block">
+          Prompt
+          <textarea id="promptInput" rows="4" placeholder="例如：一个使用双截棍的红色盔甲战士"></textarea>
+        </label>
+        <div class="actions">
+          <button id="analyzeBtn">Analyze</button>
+          <button id="executeBtn" class="secondary">Execute (GEN)</button>
+        </div>
+        <p id="statusText" class="status"></p>
+      </section>
+
+      <section class="card">
+        <h2>2. 分析结果</h2>
+        <div id="summaryBox" class="muted">等待分析...</div>
+        <h3>来源拆分（你关心的核心）</h3>
+        <table id="provenanceTable">
+          <thead>
+            <tr>
+              <th>层</th>
+              <th>item_id</th>
+              <th>来源判定</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <h3>缺失素材（需生图）</h3>
+        <div id="missingAssets" class="missing-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>3. Execute 结果</h2>
+        <pre id="executeResult" class="result-box">暂无执行结果。</pre>
+      </section>
+
+      <section class="card">
+        <h2>4. LPC 原生预览（推荐）</h2>
+        <p class="muted">
+          这里直接嵌入开源 LPC Generator，并自动同步当前命中素材，支持其完整预览能力（动画/精灵图/导出等）。
+        </p>
+        <div class="actions">
+          <button id="syncLpcBtn" class="secondary">同步到 LPC 预览</button>
+          <button id="openLpcBtn" class="secondary">新窗口打开 LPC</button>
+        </div>
+        <iframe id="lpcIframe" title="LPC Native Preview" src="/generator/index.html"></iframe>
+      </section>
+    </main>
+
+    <script src="/generator/item-metadata.js"></script>
+    <script src="./app.js?v=20260331-3" type="module"></script>
+  </body>
+</html>

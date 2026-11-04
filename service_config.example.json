@@ -1,0 +1,17 @@
+{
+  "llm": {
+    "url": "https://your-relay-domain.example/v1/chat/completions",
+    "api_key": "your-llm-relay-key",
+    "model": "gemini-2.0-flash"
+  },
+  "image": {
+    "url": "https://your-relay-domain.example/v1/images/generations",
+    "api_key": "your-image-relay-key",
+    "model": "gpt-image-1"
+  },
+  "runtime": {
+    "gen_mode_default": false,
+    "max_generation_tasks": 2,
+    "lpc_only_exclude_custom": true
+  }
+}
